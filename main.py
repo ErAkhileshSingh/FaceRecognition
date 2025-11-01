@@ -57,9 +57,9 @@ def get_db_connection():
     """Connects to MongoDB and returns the client and collection."""
     try:
         # PASTE YOUR MONGODB URI LINK HERE
-        YOUR_URI_LINK = os.environ.get("MONGODB_URI")
+        MONGODB_URI = os.environ.get("MONGODB_URI")
         
-        client = MongoClient(YOUR_URI_LINK)
+        client = MongoClient(MONGODB_URI)
         client.admin.command('ping') 
         db = client.sid
         faces_collection = db["faces"]
