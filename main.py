@@ -98,7 +98,7 @@ def load_models():
 @st.cache_data
 def load_known_faces_from_db(_faces_collection):
     """Loads known faces from the database."""
-    if _faces_collection:
+    if _faces_collection is not None:
         faces = _faces_collection.find()
         temp_embeddings = []
         temp_names = []
@@ -314,7 +314,7 @@ def main():
     client, faces_collection = get_db_connection()
     landmarker, embedder = load_models()
     
-    if not client or not faces_collection:
+    if client is None or faces_collection is None:
         st.error("Application cannot start. Please check MongoDB connection.")
         st.stop()
     
