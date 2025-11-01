@@ -1,8 +1,9 @@
 streamlit
-streamlit-webrtc
-av
 opencv-python-headless
 mediapipe
 pymongo
 numpy
 python-dotenv
+pandas
+streamlit-webrtc
+av
