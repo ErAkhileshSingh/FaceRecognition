@@ -1,4 +1,6 @@
 import cv2
+import os
+from dotenv import load_dotenv
 import mediapipe as mp
 import numpy as np
 import pandas as pd
@@ -8,6 +10,8 @@ from datetime import datetime
 from flask import Flask, render_template, Response, request, jsonify
 from pymongo import MongoClient
 
+
+load_dotenv()
 # --- Constants ---
 LANDMARKER_MODEL_PATH = r'F:\New folder\python\FaceDetection\face_landmarker.task'
 RECOGNITION_MODEL_PATH = r'F:\New folder\python\FaceDetection\mobilenet_v3_small.tflite'
@@ -33,8 +37,8 @@ app = Flask(__name__)
 try:
     # APNA POORA URI LINK YAHAN PASTE KAREIN
     # I've replaced <password> with the one from your other scripts.
-    YOUR_URI_LINK = "mongodb+srv://sammyshekhawat5:sammyshekhawat5@cluster0.u3orhz6.mongodb.net/sid?retryWrites=true&w=majority"
-
+    YOUR_URI_LINK = os.environ.get("MONGODB_URI")
+    
     client = MongoClient(YOUR_URI_LINK)
     # Test the connection
     client.admin.command('ping') 

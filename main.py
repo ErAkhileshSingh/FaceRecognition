@@ -1,4 +1,6 @@
 import cv2
+import os
+from dotenv import load_dotenv
 import mediapipe as mp
 import numpy as np
 import time
@@ -9,6 +11,8 @@ from mediapipe.framework.formats import landmark_pb2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode, RTCConfiguration
 import av # For handling video frames
 
+
+load_dotenv()
 # --- Constants ---
 # IMPORTANT: Place your model files in the same folder as this script
 LANDMARKER_MODEL_PATH = 'face_landmarker.task'
@@ -53,7 +57,7 @@ def get_db_connection():
     """Connects to MongoDB and returns the client and collection."""
     try:
         # PASTE YOUR MONGODB URI LINK HERE
-        YOUR_URI_LINK = "mongodb+srv://sammyshekhawat5:sammyshekhawat5@cluster0.u3orhz6.mongodb.net/sid?retryWrites=true&w=majority"
+        YOUR_URI_LINK = os.environ.get("MONGODB_URI")
         
         client = MongoClient(YOUR_URI_LINK)
         client.admin.command('ping') 
