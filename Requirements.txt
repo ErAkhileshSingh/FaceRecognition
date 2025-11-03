@@ -7,3 +7,4 @@ python-dotenv
 pandas
 streamlit-webrtc
 av
+opencv-python
